@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import image from "../assets/bg.jpeg";
 
 export default function Mobile() {
   return (
@@ -78,4 +79,5 @@ const container = {
   justifyContent: "center",
   minHeight: "100vh",
   alignItems: "center",
+  backgroundImage: `url(${image})`,
 };
