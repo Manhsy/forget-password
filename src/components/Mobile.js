@@ -56,6 +56,7 @@ export default function Mobile() {
           />
         </Box>
         <Button
+          fullWidth
           sx={{
             marginTop: "3vw",
             backgroundColor: "#027D84",
