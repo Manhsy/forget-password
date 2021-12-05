@@ -79,5 +79,6 @@ const container = {
   justifyContent: "center",
   minHeight: "100vh",
   alignItems: "center",
-  backgroundImage: `url(${image})`,
+  //   backgroundImage: `url(${image})`,
+  //   backgroundRepeat: false,
 };
