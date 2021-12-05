@@ -3,9 +3,34 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import image from "../assets/bg.jpeg";
+import axios from "../axios";
 
 export default function Mobile() {
+  var token = window.location.search;
+  token = token.substr(1);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+console.log(token); 
+  const submit = async () => {
+    if(password !== confirmPassword){
+      return;
+    }
+    try {
+
+      const res = await axios.post(`/auth/reset-password`, 
+        {
+          "password": password,
+          "token": token
+        }
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div style={container}>
       <div>
@@ -37,6 +62,7 @@ export default function Mobile() {
             id="outlined-basic"
             variant="outlined"
             placeholder="Enter your new password"
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Box>
         <div style={{ marginTop: "2.5vw" }} />
@@ -54,9 +80,10 @@ export default function Mobile() {
             placeholder="Confirm your new password"
             fullWidth
             variant="outlined"
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </Box>
-        <Button
+        <Button onClick={() => submit()}
           fullWidth
           sx={{
             marginTop: "3vw",
